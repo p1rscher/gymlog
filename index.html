@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Workout Logger v4</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <h1 class="title">Workout Logger</h1>
+      <p class="subtitle">PWA für mobiles Workout-Logging mit editierbaren Templates.</p>
+    </header>
+
+    <section class="card sticky-top">
+      <h2 class="section-title">Trainingstag</h2>
+      <div class="row two-col">
+        <div>
+          <label for="selectedDate">Datum</label>
+          <input id="selectedDate" type="date" />
+        </div>
+        <div>
+          <label for="workoutTitle">Workout-Titel</label>
+          <input id="workoutTitle" type="text" placeholder="z. B. Push Day" />
+        </div>
+      </div>
+
+      <div class="toolbar spacer-top">
+        <button class="btn-secondary" id="todayBtn">Heute</button>
+        <button class="btn-warning" id="copyYesterdayBtn">Gestern kopieren</button>
+        <button class="btn-danger" id="deleteDayBtn">Tag löschen</button>
+      </div>
+
+      <div class="stats-grid spacer-top">
+        <div class="stat">
+          <div class="stat-label">Datum</div>
+          <div class="stat-value" id="statDate">-</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Übungen</div>
+          <div class="stat-value" id="statExercises">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Sätze</div>
+          <div class="stat-value" id="statSets">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Gesamtvolumen</div>
+          <div class="stat-value" id="statVolume">0 kg</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <h2 class="section-title">Templates</h2>
+        <button class="btn-primary" id="newTemplateBtn">Neues Template</button>
+      </div>
+
+      <div id="templateList"></div>
+
+      <div class="footer-note">
+        Templates können bearbeitet, gelöscht und auf den aktuellen Tag angewendet werden.
+      </div>
+    </section>
+
+    <section class="card hidden" id="templateEditorCard">
+      <div class="section-header">
+        <h2 class="section-title" id="templateEditorTitle">Template bearbeiten</h2>
+        <button class="btn-secondary" id="cancelTemplateEditBtn">Abbrechen</button>
+      </div>
+
+      <div class="row two-col">
+        <div>
+          <label for="templateName">Template-Name</label>
+          <input id="templateName" type="text" placeholder="z. B. Push" />
+        </div>
+        <div>
+          <label for="templateExerciseInput">Übung hinzufügen</label>
+          <div class="inline-row">
+            <input id="templateExerciseInput" type="text" placeholder="z. B. Bankdrücken" />
+            <button class="btn-primary" id="addTemplateExerciseBtn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer-top">
+        <label>Übungen im Template</label>
+        <div id="templateExerciseList"></div>
+      </div>
+
+      <div class="toolbar spacer-top">
+        <button class="btn-primary" id="saveTemplateBtn">Template speichern</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Tagesnotizen</h2>
+      <textarea id="dayNotes" placeholder="z. B. Energie gut, Fokus auf Technik, Schulter etwas müde ..."></textarea>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Neue Übung</h2>
+      <div class="row two-col">
+        <div>
+          <label for="exerciseName">Übungsname</label>
+          <input id="exerciseName" type="text" placeholder="z. B. Kniebeugen" />
+        </div>
+        <div class="align-end">
+          <button class="btn-primary full-width" id="addExerciseBtn">Übung hinzufügen</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Übungen</h2>
+      <div id="exerciseList"></div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Daten</h2>
+      <div class="toolbar">
+        <button class="btn-info" id="exportBtn">Export JSON</button>
+        <button class="btn-info" id="importBtn">Import JSON</button>
+        <input class="hidden" id="importFile" type="file" accept="application/json" />
+        <button class="btn-danger" id="resetAllBtn">Alles löschen</button>
+      </div>
+      <p class="footer-note">
+        Daten werden lokal im Browser gespeichert. Für Backup oder Gerätewechsel regelmäßig exportieren.
+      </p>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
