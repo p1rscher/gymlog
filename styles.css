@@ -72,9 +72,15 @@ body {
 }
 
 .sticky-top {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position: static;
+}
+
+@media (min-width: 721px) {
+  .sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
 }
 
 .section-title {
