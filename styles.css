@@ -296,3 +296,45 @@ button {
   display: flex;
   align-items: end;
 }
+
+.training-card {
+  overflow: hidden;
+}
+
+.training-header {
+  align-items: center;
+}
+
+.training-summary {
+  color: var(--muted);
+  font-size: 0.88rem;
+  display: none;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.training-card-body {
+  margin-top: 10px;
+}
+
+@media (max-width: 720px) {
+  .training-card.collapsed .training-card-body {
+    display: none;
+  }
+
+  .training-card.collapsed .training-summary {
+    display: flex;
+  }
+
+  .training-card.collapsed {
+    padding-bottom: 12px;
+  }
+
+  .training-card .section-title {
+    margin-bottom: 4px;
+  }
+
+  .training-card:not(.collapsed) .training-summary {
+    display: none;
+  }
+}
