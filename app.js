@@ -63,6 +63,7 @@ function init() {
   bindEvents();
   saveState();
   render();
+  restoreTrainingCardState();
 }
 
 function loadState() {
