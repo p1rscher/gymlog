@@ -15,44 +15,59 @@
       <p class="subtitle">PWA für mobiles Workout-Logging mit editierbaren Templates.</p>
     </header>
 
-    <section class="card sticky-top">
+    <section class="card sticky-top training-card" id="trainingCard">
+  <div class="section-header training-header">
+    <div>
       <h2 class="section-title">Trainingstag</h2>
-      <div class="row two-col">
-        <div>
-          <label for="selectedDate">Datum</label>
-          <input id="selectedDate" type="date" />
-        </div>
-        <div>
-          <label for="workoutTitle">Workout-Titel</label>
-          <input id="workoutTitle" type="text" placeholder="z. B. Push Day" />
-        </div>
+      <div class="training-summary" id="trainingSummary">
+        <span id="summaryDate">-</span>
+        <span>•</span>
+        <span id="summaryWorkoutTitle">Ohne Titel</span>
+        <span>•</span>
+        <span id="summaryCounts">0 Übungen / 0 Sätze</span>
       </div>
+    </div>
+    <button class="btn-secondary" id="toggleTrainingCardBtn" type="button">Einklappen</button>
+  </div>
 
-      <div class="toolbar spacer-top">
-        <button class="btn-secondary" id="todayBtn">Heute</button>
-        <button class="btn-warning" id="copyYesterdayBtn">Gestern kopieren</button>
-        <button class="btn-danger" id="deleteDayBtn">Tag löschen</button>
+  <div class="training-card-body" id="trainingCardBody">
+    <div class="row two-col">
+      <div>
+        <label for="selectedDate">Datum</label>
+        <input id="selectedDate" type="date" />
       </div>
+      <div>
+        <label for="workoutTitle">Workout-Titel</label>
+        <input id="workoutTitle" type="text" placeholder="z. B. Push Day" />
+      </div>
+    </div>
 
-      <div class="stats-grid spacer-top">
-        <div class="stat">
-          <div class="stat-label">Datum</div>
-          <div class="stat-value" id="statDate">-</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Übungen</div>
-          <div class="stat-value" id="statExercises">0</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Sätze</div>
-          <div class="stat-value" id="statSets">0</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Gesamtvolumen</div>
-          <div class="stat-value" id="statVolume">0 kg</div>
-        </div>
+    <div class="toolbar spacer-top">
+      <button class="btn-secondary" id="todayBtn">Heute</button>
+      <button class="btn-warning" id="copyYesterdayBtn">Gestern kopieren</button>
+      <button class="btn-danger" id="deleteDayBtn">Tag löschen</button>
+    </div>
+
+    <div class="stats-grid spacer-top">
+      <div class="stat">
+        <div class="stat-label">Datum</div>
+        <div class="stat-value" id="statDate">-</div>
       </div>
-    </section>
+      <div class="stat">
+        <div class="stat-label">Übungen</div>
+        <div class="stat-value" id="statExercises">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Sätze</div>
+        <div class="stat-value" id="statSets">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Gesamtvolumen</div>
+        <div class="stat-value" id="statVolume">0 kg</div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section class="card">
       <div class="section-header">
