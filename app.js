@@ -38,6 +38,14 @@ const addTemplateExerciseBtn = document.getElementById("addTemplateExerciseBtn")
 const templateExerciseList = document.getElementById("templateExerciseList");
 const saveTemplateBtn = document.getElementById("saveTemplateBtn");
 
+const trainingCard = document.getElementById("trainingCard");
+const trainingCardBody = document.getElementById("trainingCardBody");
+const toggleTrainingCardBtn = document.getElementById("toggleTrainingCardBtn");
+
+const summaryDate = document.getElementById("summaryDate");
+const summaryWorkoutTitle = document.getElementById("summaryWorkoutTitle");
+const summaryCounts = document.getElementById("summaryCounts");
+
 let editingTemplateId = null;
 let editingTemplateExercises = [];
 
