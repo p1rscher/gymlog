@@ -59,6 +59,7 @@ function init() {
   }
 
   selectedDateInput.value = state.selectedDate;
+  window.addEventListener("resize", restoreTrainingCardState);
   registerServiceWorker();
   bindEvents();
   restoreTrainingCardState();
@@ -127,6 +128,7 @@ function bindEvents() {
   selectedDateInput.addEventListener("change", () => {
     if (!selectedDateInput.value) return;
     state.selectedDate = selectedDateInput.value;
+    toggleTrainingCardBtn.addEventListener("click", toggleTrainingCard);
     getWorkout(state.selectedDate);
     saveState();
     render();
@@ -296,10 +298,18 @@ function getPreviousExerciseEntry(exerciseName, currentDate) {
 
 function updateStats() {
   const workout = getWorkout();
+  const exerciseCount = workout.exercises.length;
+  const setCount = totalSets(workout);
+  const title = (workout.title || "").trim();
+
   statDate.textContent = formatDateGerman(state.selectedDate);
-  statExercises.textContent = workout.exercises.length;
-  statSets.textContent = totalSets(workout);
+  statExercises.textContent = exerciseCount;
+  statSets.textContent = setCount;
   statVolume.textContent = `${calcWorkoutVolume(workout)} kg`;
+
+  summaryDate.textContent = formatDateGerman(state.selectedDate);
+  summaryWorkoutTitle.textContent = title || "Ohne Titel";
+  summaryCounts.textContent = `${exerciseCount} Übung${exerciseCount === 1 ? "" : "en"} / ${setCount} Satz${setCount === 1 ? "" : "e"}`;
 }
 
 function render() {
@@ -529,6 +539,29 @@ function applyTemplate(templateId) {
 
   saveState();
   render();
+}
+
+function isMobileView() {
+  return window.innerWidth <= 720;
+}
+
+function toggleTrainingCard() {
+  const collapsed = trainingCard.classList.toggle("collapsed");
+
+  toggleTrainingCardBtn.textContent = collapsed ? "Aufklappen" : "Einklappen";
+  localStorage.setItem("workout-training-card-collapsed", collapsed ? "1" : "0");
+}
+
+function restoreTrainingCardState() {
+  const saved = localStorage.getItem("workout-training-card-collapsed");
+
+  if (isMobileView() && saved === "1") {
+    trainingCard.classList.add("collapsed");
+    toggleTrainingCardBtn.textContent = "Aufklappen";
+  } else {
+    trainingCard.classList.remove("collapsed");
+    toggleTrainingCardBtn.textContent = "Einklappen";
+  }
 }
 
 function exportData() {
