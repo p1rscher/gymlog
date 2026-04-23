@@ -61,9 +61,9 @@ function init() {
   selectedDateInput.value = state.selectedDate;
   registerServiceWorker();
   bindEvents();
+  restoreTrainingCardState();
   saveState();
   render();
-  restoreTrainingCardState();
 }
 
 function loadState() {
